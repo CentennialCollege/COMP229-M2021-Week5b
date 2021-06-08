@@ -36,3 +36,8 @@ export function DisplayEditPage(req: Request, res: Response, next: NextFunction)
         res.render('index', {title: 'Edit', page: 'edit', clothing: clothingItemToEdit});
     });
 }
+
+export function DisplayAddPage(req: Request, res: Response, next: NextFunction): void
+{
+        res.render('index', {title: 'Add', page: 'edit', clothing: ''});
+}
