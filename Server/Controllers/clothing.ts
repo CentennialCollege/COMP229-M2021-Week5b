@@ -13,7 +13,26 @@ export function DisplayClothingListPage(req: Request, res: Response, next: NextF
             return console.error(err);
         }
 
-        // print the collection to the console
-        console.log(clothingCollection);
+        res.render('index', {title: 'Clothing List', page: 'clothing-list', clothing: clothingCollection});
+    });
+}
+
+export function DisplayEditPage(req: Request, res: Response, next: NextFunction): void
+{
+    let id = req.params.id;
+
+    console.log(id);
+
+    Clothing.findById(id, {}, {}, (err, clothingItemToEdit) => 
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+
+        // show the edit page
+
+        res.render('index', {title: 'Edit', page: 'edit', clothing: clothingItemToEdit});
     });
 }
